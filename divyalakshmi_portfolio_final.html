@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyalakshmi M — AI & ML Student · Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0F0A2E;
+  --bg2:#1A1145;
+  --bg3:#221760;
+  --card:#1E1550;
+  --card2:#2A1E6E;
+  --v1:#A78BFA;
+  --v2:#7C3AED;
+  --v3:#C4B5FD;
+  --v4:#EDE9FE;
+  --v5:#DDD6FE;
+  --gold:#F59E0B;
+  --gold2:#FDE68A;
+  --white:#F5F3FF;
+  --muted:#9CA3AF;
+  --border:rgba(167,139,250,0.18);
+  --font:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.7;min-height:100vh}
+
+/* ICONS using Unicode symbols — guaranteed to work everywhere */
+.ic::before{font-style:normal;font-weight:normal}
+.ic-spark::before{content:'✦'}
+.ic-mail::before{content:'✉'}
+.ic-phone::before{content:'☎'}
+.ic-linkedin::before{content:'in'}
+.ic-github::before{content:'◈'}
+.ic-map::before{content:'◉'}
+.ic-check::before{content:'✓'}
+.ic-star::before{content:'★'}
+.ic-school::before{content:'🎓'}
+.ic-brain::before{content:'◆'}
+.ic-code::before{content:'</>'}
+.ic-folder::before{content:'▣'}
+.ic-tool::before{content:'⚙'}
+.ic-trophy::before{content:'◈'}
+.ic-present::before{content:'▸'}
+.ic-brief::before{content:'◆'}
+.ic-cert::before{content:'✦'}
+.ic-cam::before{content:'⊕'}
+.ic-upload::before{content:'↑'}
+.ic-eye::before{content:'◉'}
+.ic-trash::before{content:'✕'}
+.ic-plus::before{content:'+'}
+.ic-send::before{content:'➤'}
+.ic-layer::before{content:'⊞'}
+.ic-build::before{content:'▪'}
+.ic-laptop::before{content:'▦'}
+.ic-photo::before{content:'◻'}
+.ic-pen::before{content:'✎'}
+.ic-info::before{content:'ℹ'}
+.ic-user::before{content:'◈'}
+.ic-close::before{content:'✕'}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 2.5rem;
+  background:rgba(15,10,46,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-size:15px;font-weight:700;color:var(--v1);display:flex;align-items:center;gap:6px;letter-spacing:0.01em}
+.logo .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
+nav ul{list-style:none;display:flex;gap:1.4rem;flex-wrap:wrap}
+nav ul li a{font-size:12.5px;color:var(--v3);text-decoration:none;font-weight:500;transition:color 0.2s;letter-spacing:0.01em}
+nav ul li a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{
+  background:linear-gradient(160deg,#0F0A2E 0%,#1A1145 50%,#2D1B69 100%);
+  padding:4rem 2rem 3.5rem;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero>*:not(.hero-bg){position:relative;z-index:1}
+
+/* SINGLE CENTERED PROFILE PHOTO */
+.avatar-wrap{position:relative;width:120px;height:120px;margin:0 auto 1.4rem}
+.avatar{
+  width:120px;height:120px;border-radius:50%;
+  background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;font-weight:700;color:var(--v1);
+  border:3px solid var(--v2);
+  overflow:hidden;
+  box-shadow:0 0 0 6px rgba(124,58,237,0.15),0 8px 32px rgba(0,0,0,0.4);
+}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-edit{
+  position:absolute;bottom:4px;right:4px;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--v2);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:2px solid var(--bg);
+  font-size:13px;color:#fff;font-weight:700;
+}
+.avatar-edit:hover{background:#6D28D9}
+
+.hero h1{font-size:26px;font-weight:700;color:var(--white);margin-bottom:5px;letter-spacing:-0.01em}
+.hero .role{
+  font-size:13.5px;color:var(--v3);margin-bottom:1rem;
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-weight:500;
+}
+.role-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);display:inline-block}
+.hero p{font-size:14px;color:var(--muted);max-width:500px;margin:0 auto 1.4rem;line-height:1.8}
+
+/* STATUS BADGE — below name, above bio */
+.status-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border-radius:24px;
+  background:rgba(16,185,129,0.12);
+  border:1px solid rgba(16,185,129,0.3);
+  color:#6EE7B7;font-size:12px;font-weight:600;
+  margin-bottom:1rem;letter-spacing:0.02em;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#10B981;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 20px;border-radius:24px;font-size:13px;
+  cursor:pointer;text-decoration:none;font-family:var(--font);
+  border:1px solid var(--border);color:var(--v3);background:rgba(167,139,250,0.08);
+  font-weight:500;transition:all 0.18s;
+}
+.btn:hover{background:rgba(167,139,250,0.18);border-color:var(--v1)}
+.btn-solid{background:var(--v2);color:#fff;border-color:var(--v2)}
+.btn-solid:hover{background:#6D28D9}
+.btn-gold{background:rgba(245,158,11,0.15);color:var(--gold);border-color:rgba(245,158,11,0.3)}
+.btn-gold:hover{background:rgba(245,158,11,0.25)}
+
+/* SECTIONS */
+section{padding:2.8rem 2.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+section>*:not(.bg-svg){position:relative;z-index:1}
+.sec-a{background:var(--bg)}
+.sec-b{background:var(--bg2)}
+.bg-svg{position:absolute;inset:0;pointer-events:none;z-index:0;width:100%;height:100%}
+
+h2{
+  font-size:17px;font-weight:700;color:var(--white);
+  margin-bottom:1.3rem;
+  display:flex;align-items:center;gap:10px;
+  letter-spacing:-0.01em;
+}
+.sec-icon{
+  width:34px;height:34px;border-radius:9px;
+  background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--v1);flex-shrink:0;
+}
+h2 .ln{flex:1;height:1px;background:linear-gradient(to right,rgba(167,139,250,0.4),transparent);margin-left:4px}
+h3{font-size:14.5px;font-weight:600;color:var(--white)}
+
+/* ABOUT */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:640px){
+  .two-col,.skills-grid,.cert-grid,.grid3{grid-template-columns:1fr!important}
+  nav ul{gap:0.7rem}
+  .hero h1{font-size:20px}
+}
+.about-text p{font-size:14px;color:var(--muted);margin-bottom:0.8rem;line-height:1.8}
+.info-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:0.8rem}
+.ipill{
+  font-size:12px;padding:5px 13px;border-radius:20px;font-weight:500;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.ipill-v{background:rgba(167,139,250,0.12);color:var(--v3);border:1px solid rgba(167,139,250,0.25)}
+.ipill-g{background:rgba(245,158,11,0.1);color:var(--gold2);border:1px solid rgba(245,158,11,0.22)}
+.clist{list-style:none;display:flex;flex-direction:column;gap:12px}
+.clist li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
+.clist li .ci{
+  width:30px;height:30px;border-radius:8px;
+  background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--v1);flex-shrink:0;font-weight:700;font-style:normal;
+}
+.clist li a{color:var(--v3);text-decoration:none}
+.clist li a:hover{color:var(--gold)}
+
+/* CARDS */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:9px;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.card:hover{border-color:rgba(167,139,250,0.4);transform:translateY(-2px)}
+.ctag{font-size:11px;padding:3px 10px;border-radius:20px;width:fit-content;font-weight:600}
+.tv{background:rgba(167,139,250,0.15);color:var(--v3);border:1px solid rgba(167,139,250,0.25)}
+.tg{background:rgba(245,158,11,0.12);color:var(--gold2);border:1px solid rgba(245,158,11,0.22)}
+.card p{font-size:13px;color:var(--muted);flex:1;line-height:1.7}
+.techs{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.pill{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
+.pv{background:rgba(167,139,250,0.12);color:var(--v3);border:1px solid rgba(167,139,250,0.2)}
+.pg{background:rgba(245,158,11,0.1);color:var(--gold2);border:1px solid rgba(245,158,11,0.18)}
+.pp{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid rgba(255,255,255,0.1)}
+.clink{font-size:12.5px;color:var(--v1);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-weight:500}
+.clink:hover{color:var(--gold)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1.3rem}
+.sgroup h3{font-size:11px;font-weight:700;color:var(--v1);margin-bottom:9px;text-transform:uppercase;letter-spacing:0.07em}
+.pwrap{display:flex;flex-wrap:wrap;gap:6px}
+
+/* EDUCATION */
+.edu-item{display:flex;gap:14px;align-items:flex-start;padding-bottom:1.3rem;border-bottom:1px solid var(--border);margin-bottom:1.3rem}
+.edu-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.eicon{width:46px;height:46px;border-radius:12px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(124,58,237,0.3);font-size:20px}
+.emeta{font-size:12px;color:var(--v1);margin-top:3px;font-weight:500}
+
+/* CERTIFICATIONS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1rem;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s}
+.cert-card:hover{border-color:rgba(167,139,250,0.4)}
+.cert-thumb{
+  width:100%;height:110px;border-radius:10px;
+  background:var(--bg3);border:1.5px dashed rgba(167,139,250,0.3);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;overflow:hidden;transition:border-color 0.18s;
+}
+.cert-thumb:hover{border-color:var(--v1)}
+.cert-thumb img{width:100%;height:100%;object-fit:cover;border-radius:9px}
+.cert-thumb .pi{font-size:26px;color:rgba(167,139,250,0.4)}
+.cert-thumb .pt{font-size:11px;color:var(--muted);margin-top:5px}
+.cert-title{font-size:13px;font-weight:600;color:var(--white);outline:none;border:1px dashed transparent;border-radius:4px;padding:2px 4px;cursor:text;background:transparent}
+.cert-title:focus{border-color:var(--v1);background:rgba(124,58,237,0.1)}
+.cert-issuer{font-size:12px;color:var(--v1);outline:none;border:1px dashed transparent;border-radius:4px;padding:2px 4px;cursor:text;background:transparent;font-weight:500}
+.cert-issuer:focus{border-color:rgba(167,139,250,0.5);background:rgba(124,58,237,0.1)}
+.cert-actions{display:flex;gap:5px;flex-wrap:wrap}
+.bup{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid rgba(167,139,250,0.25);background:rgba(167,139,250,0.1);color:var(--v3);cursor:pointer;font-family:var(--font);font-weight:500}
+.bup:hover{background:rgba(167,139,250,0.2)}
+.bview{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid rgba(245,158,11,0.25);background:rgba(245,158,11,0.08);color:var(--gold2);cursor:pointer;font-family:var(--font);font-weight:500}
+.bview:hover{background:rgba(245,158,11,0.15)}
+.bdel{display:inline-flex;align-items:center;font-size:11px;padding:4px 8px;border-radius:20px;border:1px solid rgba(239,68,68,0.2);background:transparent;color:#FCA5A5;cursor:pointer;font-family:var(--font)}
+.bdel:hover{background:rgba(239,68,68,0.1)}
+.add-card{
+  background:transparent;border:2px dashed rgba(167,139,250,0.2);border-radius:16px;
+  padding:1rem;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:7px;cursor:pointer;min-height:198px;transition:all 0.18s;
+}
+.add-card:hover{background:rgba(167,139,250,0.05);border-color:rgba(167,139,250,0.4)}
+.add-card .pi{font-size:28px;color:rgba(167,139,250,0.35)}
+.add-card span{font-size:12.5px;color:var(--v1);font-weight:500}
+.hint{font-size:11.5px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:6px;background:rgba(167,139,250,0.07);padding:9px 13px;border-radius:9px;border:1px solid var(--border)}
+
+/* ACHIEVEMENTS */
+.ach-item{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+.ach-item:last-child{border-bottom:none}
+.ach-icon{width:34px;height:34px;border-radius:9px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+
+/* INTERNSHIPS */
+.int-item{display:flex;align-items:flex-start;gap:14px;padding-bottom:1.1rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.int-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.iicon{width:44px;height:44px;border-radius:12px;background:rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(124,58,237,0.3);font-size:18px}
+
+/* CONTACT */
+.cfi{font-size:13px;padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--white);font-family:var(--font);width:100%;transition:border-color 0.18s}
+.cfi:focus{outline:none;border-color:var(--v1)}
+.cfi::placeholder{color:rgba(156,163,175,0.5)}
+
+/* EDITABLE hint */
+[contenteditable]{border:1px dashed transparent;border-radius:4px;padding:2px 4px;cursor:text;transition:border-color 0.18s}
+[contenteditable]:hover{border-color:rgba(167,139,250,0.3)}
+[contenteditable]:focus{outline:none;border-color:var(--v1);background:rgba(124,58,237,0.08)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:76vh;border-radius:14px;border:2px solid var(--v2);object-fit:contain;box-shadow:0 8px 50px rgba(124,58,237,0.3)}
+.lb-title{font-size:15px;color:var(--v3);font-weight:600}
+.lb-close{display:inline-flex;align-items:center;gap:7px;padding:9px 22px;border-radius:20px;border:1px solid var(--border);background:rgba(167,139,250,0.1);color:var(--v3);font-size:13px;cursor:pointer;font-family:var(--font);font-weight:500}
+.lb-close:hover{background:rgba(167,139,250,0.2)}
+
+footer{text-align:center;padding:1.6rem;font-size:12.5px;color:var(--muted);background:var(--bg);border-top:1px solid var(--border)}
+footer span{color:var(--v1)}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLB()">
+  <div class="lb-title" id="lbTitle"></div>
+  <img id="lbImg" src="" alt="Certificate preview">
+  <button class="lb-close" onclick="closeLB()"><b style="font-style:normal">✕</b> Close</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><span class="dot"></span> Divyalakshmi M</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">
+    <svg width="100%" height="100%" viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <circle cx="700" cy="60" r="110" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.22"/>
+      <circle cx="700" cy="60" r="70" fill="none" stroke="#A78BFA" stroke-width="0.7" opacity="0.16"/>
+      <circle cx="60" cy="260" r="90" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.18"/>
+      <circle cx="60" cy="260" r="55" fill="none" stroke="#A78BFA" stroke-width="0.6" opacity="0.14"/>
+      <polygon points="580,220 602,178 624,220" fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.2"/>
+      <polygon points="90,40 108,68 72,68" fill="none" stroke="#C4B5FD" stroke-width="0.8" opacity="0.22"/>
+      <rect x="500" y="18" width="24" height="24" rx="6" fill="none" stroke="#F59E0B" stroke-width="0.8" opacity="0.2" transform="rotate(20,512,30)"/>
+      <circle cx="340" cy="290" r="4" fill="#F59E0B" opacity="0.25"/>
+      <circle cx="180" cy="70" r="3" fill="#A78BFA" opacity="0.35"/>
+      <circle cx="560" cy="150" r="3" fill="#F59E0B" opacity="0.25"/>
+      <path d="M270 100 L292 78 L314 100 L292 122 Z" fill="none" stroke="#7C3AED" stroke-width="0.7" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- SINGLE CENTERED PHOTO -->
+  <div class="avatar-wrap">
+    <div class="avatar" id="avatar">DM</div>
+    <label class="avatar-edit" title="Upload your photo" style="display:flex">
+      ⊕
+      <input type="file" accept="image/*" id="photoInput" style="display:none" onchange="handlePhoto(event)">
+    </label>
+  </div>
+
+  <h1>Divyalakshmi M</h1>
+  <div class="role">
+    <b style="font-size:13px;color:#A78BFA;font-weight:400">◆</b> AI &amp; ML Student
+    <span class="role-dot"></span>
+    <b style="font-size:13px;color:#A78BFA;font-weight:400">⊞</b> Full Stack Developer
+  </div>
+
+  <!-- STATUS — properly below name, not overlapping photo -->
+  <div class="status-badge">
+    <span class="status-dot"></span> Open to opportunities
+  </div>
+
+  <p contenteditable="true">Passionate about building intelligent, user-centric applications at the intersection of AI, Machine Learning, and modern web development. Currently pursuing B.Sc AI &amp; ML, crafting real-world solutions through code.</p>
+
+  <div class="hero-btns">
+    <a href="#contact" class="btn btn-solid">✉ Get in touch</a>
+    <a href="#projects" class="btn">&lt;/&gt; Projects</a>
+    <a href="https://github.com/Divya-0714" target="_blank" class="btn">◈ GitHub</a>
+    <a href="https://www.linkedin.com/in/divyalakshmi-m-849109333" target="_blank" class="btn btn-gold">in LinkedIn</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec-a">
+  <svg class="bg-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="750" cy="50" r="120" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.1"/>
+    <circle cx="50" cy="250" r="80" fill="none" stroke="#F59E0B" stroke-width="0.6" opacity="0.08"/>
+  </svg>
+  <h2><span class="sec-icon">◈</span> About me <span class="ln"></span></h2>
+  <div class="two-col">
+    <div class="about-text">
+      <p contenteditable="true">I am an AI and ML student with a strong interest in building full-stack web applications. I love solving real-world problems through code and enjoy working across both intelligent systems and modern UI development.</p>
+      <p contenteditable="true">I've worked on web projects using React, JavaScript, and Bootstrap, and I'm constantly expanding my skills in Python, data science, and machine learning frameworks.</p>
+      <div class="info-pills">
+        <span class="ipill ipill-v">◉ Tirunelveli,TamilNadu, India</span>
+        <span class="ipill ipill-v">◆ 2024 – 2027</span>
+        <span class="ipill ipill-g">★ CGPA 8.17 / 10</span>
+      </div>
+    </div>
+    <ul class="clist">
+      <li><span class="ci">✉</span><a href="mailto:divyalakshmim142007@gmail.com">divyalakshmim142007@gmail.com</a></li>
+      <li><span class="ci">☎</span> +91 8903653042</li>
+      <li><span class="ci">in</span><a href="https://www.linkedin.com/in/divyalakshmi-m-849109333" target="_blank">LinkedIn profile</a></li>
+      <li><span class="ci">◈</span><a href="https://github.com/Divya-0714" target="_blank">github.com/Divya-0714</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec-b">
+  <svg class="bg-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="250" r="130" fill="none" stroke="#A78BFA" stroke-width="1" opacity="0.08"/>
+    <circle cx="750" cy="50" r="90" fill="none" stroke="#F59E0B" stroke-width="0.6" opacity="0.07"/>
+  </svg>
+  <h2><span class="sec-icon">▣</span> Projects <span class="ln"></span></h2>
+  <div class="grid3">
+    <div class="card">
+      <span class="ctag tg">Web App</span>
+      <h3 contenteditable="true">Grocery Static Website</h3>
+      <p contenteditable="true">A fully responsive static grocery website with product listings, category filters, and a clean shopping UI built using React and modern CSS.</p>
+      <div class="techs"><span class="pill pv">HTML</span><span class="pill pv">CSS</span><span class="pill pg">React</span><span class="pill pv">JavaScript</span></div>
+      <a href="https://github.com/Divya-0714" target="_blank" class="clink">◈ View on GitHub</a>
+    </div>
+    <div class="card">
+      <span class="ctag tv">Web App</span>
+      <h3 contenteditable="true">Course Enrollment Website</h3>
+      <p contenteditable="true">A dynamic course enrollment platform where students can browse, filter, and enroll in courses with a Bootstrap-powered responsive interface.</p>
+      <div class="techs"><span class="pill pv">HTML</span><span class="pill pv">CSS</span><span class="pill pg">Bootstrap</span><span class="pill pv">JavaScript</span></div>
+      <a href="https://github.com/Divya-0714" target="_blank" class="clink">◈ View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec-a">
+  <svg class="bg-svg" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="750" cy="125" r="150" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.09"/>
+  </svg>
+  <h2><span class="sec-icon">⚙</span> Skills <span class="ln"></span></h2>
+  <div class="skills-grid">
+    <div class="sgroup"><h3>Languages</h3><div class="pwrap"><span class="pill pv">Python</span><span class="pill pv">Java</span><span class="pill pv">C++</span><span class="pill pv">C</span><span class="pill pv">JavaScript</span></div></div>
+    <div class="sgroup"><h3>Frontend</h3><div class="pwrap"><span class="pill pg">HTML</span><span class="pill pg">CSS</span><span class="pill pg">React</span><span class="pill pg">Bootstrap</span></div></div>
+    <div class="sgroup"><h3>Database</h3><div class="pwrap"><span class="pill pp">MongoDB</span></div></div>
+    <div class="sgroup"><h3>AI / ML</h3><div class="pwrap"><span class="pill pv">Machine Learning</span><span class="pill pv">Deep Learning</span><span class="pill pv">NLP</span><span class="pill pv">Data Science</span></div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec-b">
+  <svg class="bg-svg" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="125" r="130" fill="none" stroke="#A78BFA" stroke-width="1" opacity="0.08"/>
+  </svg>
+  <h2><span class="sec-icon">🎓</span> Education <span class="ln"></span></h2>
+  <div class="edu-item">
+    <div class="eicon">◆</div>
+    <div>
+      <h3>B.Sc Artificial Intelligence and Machine Learning</h3>
+      <div class="emeta">2024 – 2027 &nbsp;·&nbsp; CGPA: 8.17 / 10</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">Focused on AI, machine learning, deep learning, NLP, and full-stack development. Actively involved in paper presentations and technical events.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec-a">
+  <svg class="bg-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="750" cy="200" r="160" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.08"/>
+    <circle cx="50" cy="200" r="100" fill="none" stroke="#F59E0B" stroke-width="0.6" opacity="0.07"/>
+  </svg>
+  <h2><span class="sec-icon">✦</span> Certifications <span class="ln"></span></h2>
+  <p class="hint">✎ Click title or issuer to edit &nbsp;·&nbsp; ↑ Upload certificate image &nbsp;·&nbsp; ◉ Click thumbnail to view fullscreen &nbsp;·&nbsp; Images saved in your browser</p>
+  <div class="cert-grid" id="certGrid">
+    <div class="cert-card" data-id="1">
+      <div class="cert-thumb" onclick="viewCert(1)" id="thumb-1"><div class="pi">◻</div><span class="pt">Click Upload to add image</span></div>
+      <div class="cert-title" contenteditable="true" id="ctitle-1">NPTEL – Cloud Computing</div>
+      <div class="cert-issuer" contenteditable="true" id="cissuer-1">NPTEL · 2024</div>
+      <div class="cert-actions">
+        <label class="bup">↑ Upload<input type="file" accept="image/*" style="display:none" onchange="uploadCert(event,1)"></label>
+        <button class="bview" onclick="viewCert(1)">◉ View</button>
+        <button class="bdel" onclick="deleteCert(1)">✕</button>
+      </div>
+    </div>
+    <div class="cert-card" data-id="2">
+      <div class="cert-thumb" onclick="viewCert(2)" id="thumb-2"><div class="pi">◻</div><span class="pt">Click Upload to add image</span></div>
+      <div class="cert-title" contenteditable="true" id="ctitle-2">NPTEL – UN Sustainable Development Goals</div>
+      <div class="cert-issuer" contenteditable="true" id="cissuer-2">NPTEL · 2024</div>
+      <div class="cert-actions">
+        <label class="bup">↑ Upload<input type="file" accept="image/*" style="display:none" onchange="uploadCert(event,2)"></label>
+        <button class="bview" onclick="viewCert(2)">◉ View</button>
+        <button class="bdel" onclick="deleteCert(2)">✕</button>
+      </div>
+    </div>
+    <div class="cert-card" data-id="3">
+      <div class="cert-thumb" onclick="viewCert(3)" id="thumb-3"><div class="pi">◻</div><span class="pt">Click Upload to add image</span></div>
+      <div class="cert-title" contenteditable="true" id="ctitle-3">Deloitte – Data Analytics Job Simulation</div>
+      <div class="cert-issuer" contenteditable="true" id="cissuer-3">Deloitte · 2024</div>
+      <div class="cert-actions">
+        <label class="bup">↑ Upload<input type="file" accept="image/*" style="display:none" onchange="uploadCert(event,3)"></label>
+        <button class="bview" onclick="viewCert(3)">◉ View</button>
+        <button class="bdel" onclick="deleteCert(3)">✕</button>
+      </div>
+    </div>
+    <div class="cert-card" data-id="4">
+      <div class="cert-thumb" onclick="viewCert(4)" id="thumb-4"><div class="pi">◻</div><span class="pt">Click Upload to add image</span></div>
+      <div class="cert-title" contenteditable="true" id="ctitle-4">Infosys Springboard – AI, NLP &amp; Data Science</div>
+      <div class="cert-issuer" contenteditable="true" id="cissuer-4">Infosys Springboard · 2024</div>
+      <div class="cert-actions">
+        <label class="bup">↑ Upload<input type="file" accept="image/*" style="display:none" onchange="uploadCert(event,4)"></label>
+        <button class="bview" onclick="viewCert(4)">◉ View</button>
+        <button class="bdel" onclick="deleteCert(4)">✕</button>
+      </div>
+    </div>
+    <div class="add-card" onclick="addCert()">
+      <div class="pi">+</div>
+      <span>Add certificate</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS & INTERNSHIPS -->
+<section id="achievements" class="sec-b">
+  <svg class="bg-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="750" cy="200" r="140" fill="none" stroke="#A78BFA" stroke-width="1" opacity="0.08"/>
+    <circle cx="50" cy="200" r="110" fill="none" stroke="#F59E0B" stroke-width="0.6" opacity="0.07"/>
+  </svg>
+  <h2><span class="sec-icon">★</span> Achievements <span class="ln"></span></h2>
+  <div class="ach-item">
+    <div class="ach-icon">▸</div>
+    <div>
+      <h3>Securing IoT Ecosystem with Blockchain and Zero Trust Models</h3>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px">Paper presentation exploring advanced security architectures for connected devices using blockchain and zero trust principles.</p>
+    </div>
+  </div>
+  <div class="ach-item">
+    <div class="ach-icon">▸</div>
+    <div>
+      <h3>Deep Learning for Agricultural Classification</h3>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px">Paper presentation reviewing deep learning techniques, challenges, and opportunities for crop and soil classification in agriculture.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:2rem"><span class="sec-icon">◆</span> Internships <span class="ln"></span></h2>
+  <div class="int-item">
+    <div class="iicon">▪</div>
+    <div>
+      <h3>Software Development Intern</h3>
+      <div class="emeta">Qbatzclay &nbsp;·&nbsp; Completed</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px" contenteditable="true">Completed a software development internship gaining hands-on experience building and maintaining real-world applications.</p>
+    </div>
+  </div>
+  <div class="int-item">
+    <div class="iicon">▦</div>
+    <div>
+      <h3>Job Skills Development Program</h3>
+      <div class="emeta">Tara IT Tech (JSDC) &nbsp;·&nbsp; Completed</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px" contenteditable="true">Participated in a structured job skills development program focused on industry-ready technical and professional competencies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec-a">
+  <svg class="bg-svg" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="150" r="140" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.08"/>
+    <circle cx="750" cy="150" r="100" fill="none" stroke="#F59E0B" stroke-width="0.6" opacity="0.07"/>
+  </svg>
+  <h2><span class="sec-icon">✉</span> Contact <span class="ln"></span></h2>
+  <div class="two-col">
+    <div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:1.1rem;line-height:1.8">I'm open to internships, collaborations, and full-time opportunities. Feel free to reach out!</p>
+      <ul class="clist">
+        <li><span class="ci">✉</span><a href="mailto:divyalakshmim142007@gmail.com">divyalakshmim142007@gmail.com</a></li>
+        <li><span class="ci">☎</span> +91 8903653042</li>
+        <li><span class="ci">in</span><a href="https://www.linkedin.com/in/divyalakshmi-m-849109333" target="_blank">LinkedIn profile</a></li>
+        <li><span class="ci">◈</span><a href="https://github.com/Divya-0714" target="_blank">github.com/Divya-0714</a></li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:11.5px;color:var(--v1);font-weight:600">Name</label><input type="text" placeholder="Your name" class="cfi"></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:11.5px;color:var(--v1);font-weight:600">Email</label><input type="email" placeholder="your@email.com" class="cfi"></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><label style="font-size:11.5px;color:var(--v1);font-weight:600">Message</label><textarea placeholder="Tell me about your project or opportunity..." class="cfi" style="min-height:95px;resize:vertical"></textarea></div>
+      <button class="btn btn-solid" style="width:fit-content">➤ Send message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>✦</span> &nbsp;© 2026 <span>Divyalakshmi M</span> &nbsp;·&nbsp; AI &amp; ML Student · Full Stack Developer · Tirunelveli,TamilNadu, India
+</footer>
+
+<script>
+// ── PROFILE PHOTO ─────────────────────────────────────────────────
+function handlePhoto(e){
+  var file=e.target.files[0];if(!file)return;
+  var r=new FileReader();
+  r.onload=function(ev){setPhoto(ev.target.result);try{localStorage.setItem('dm_photo',ev.target.result);}catch(x){}};
+  r.readAsDataURL(file);
+}
+function setPhoto(src){
+  document.getElementById('avatar').innerHTML='<img src="'+src+'" alt="Divyalakshmi M" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+}
+(function(){try{var p=localStorage.getItem('dm_photo');if(p)setPhoto(p);}catch(x){}})();
+
+// ── CERTIFICATES ─────────────────────────────────────────────────
+var certData={};var nextId=5;
+
+function saveCerts(){
+  try{
+    var d={};
+    Object.keys(certData).forEach(function(id){
+      var ti=document.getElementById('ctitle-'+id);
+      var is=document.getElementById('cissuer-'+id);
+      d[id]={img:certData[id],title:ti?ti.innerText:'',issuer:is?is.innerText:''};
+    });
+    localStorage.setItem('dm_certs',JSON.stringify(d));
+    localStorage.setItem('dm_nextId',String(nextId));
+  }catch(x){}
+}
+
+function uploadCert(e,id){
+  var file=e.target.files[0];if(!file)return;
+  var r=new FileReader();
+  r.onload=function(ev){
+    certData[id]=ev.target.result;
+    var t=document.getElementById('thumb-'+id);
+    if(t)t.innerHTML='<img src="'+ev.target.result+'" alt="Certificate">';
+    saveCerts();
+  };
+  r.readAsDataURL(file);
+}
+
+function viewCert(id){
+  if(!certData[id]){alert('Please upload a certificate image first.');return;}
+  var ti=document.getElementById('ctitle-'+id);
+  document.getElementById('lbImg').src=certData[id];
+  document.getElementById('lbTitle').innerText=ti?ti.innerText:'Certificate';
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+
+function deleteCert(id){
+  if(!confirm('Remove this certificate?'))return;
+  delete certData[id];
+  var c=document.querySelector('[data-id="'+id+'"]');
+  if(c)c.remove();
+  saveCerts();
+}
+
+function makeCertCard(id,title,issuer,imgSrc){
+  var d=document.createElement('div');
+  d.className='cert-card';d.setAttribute('data-id',id);
+  d.innerHTML=
+    '<div class="cert-thumb" onclick="viewCert('+id+')" id="thumb-'+id+'">'+(imgSrc?'<img src="'+imgSrc+'" alt="Certificate">':'<div class="pi">◻</div><span class="pt">Click Upload to add image</span>')+'</div>'+
+    '<div class="cert-title" contenteditable="true" id="ctitle-'+id+'">'+title+'</div>'+
+    '<div class="cert-issuer" contenteditable="true" id="cissuer-'+id+'">'+issuer+'</div>'+
+    '<div class="cert-actions">'+
+      '<label class="bup">↑ Upload<input type="file" accept="image/*" style="display:none" onchange="uploadCert(event,'+id+')"></label>'+
+      '<button class="bview" onclick="viewCert('+id+')">◉ View</button>'+
+      '<button class="bdel" onclick="deleteCert('+id+')">✕</button>'+
+    '</div>';
+  return d;
+}
+
+function addCert(){
+  var id=nextId++;
+  var add=document.querySelector('.add-card');
+  add.parentNode.insertBefore(makeCertCard(id,'Certificate title','Issuer · Year',null),add);
+  saveCerts();
+}
+
+// Restore from localStorage
+(function(){
+  try{
+    var nid=localStorage.getItem('dm_nextId');if(nid)nextId=parseInt(nid)||5;
+    var saved=localStorage.getItem('dm_certs');if(!saved)return;
+    var data=JSON.parse(saved);
+    var add=document.querySelector('.add-card');
+    Object.keys(data).forEach(function(id){
+      var idn=parseInt(id);var d=data[id];
+      certData[idn]=d.img;
+      var ex=document.querySelector('[data-id="'+idn+'"]');
+      if(ex){
+        if(d.img){var t=document.getElementById('thumb-'+idn);if(t&&d.img)t.innerHTML='<img src="'+d.img+'" alt="Certificate">';}
+        if(d.title){var ti=document.getElementById('ctitle-'+idn);if(ti)ti.innerText=d.title;}
+        if(d.issuer){var is=document.getElementById('cissuer-'+idn);if(is)is.innerText=d.issuer;}
+      }else{
+        add.parentNode.insertBefore(makeCertCard(idn,d.title||'Certificate',d.issuer||'Issuer',d.img||null),add);
+      }
+    });
+  }catch(x){}
+})();
+
+document.addEventListener('blur',function(e){
+  if(e.target.classList.contains('cert-title')||e.target.classList.contains('cert-issuer'))saveCerts();
+},true);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLB();});
+</script>
+</body>
+</html>
